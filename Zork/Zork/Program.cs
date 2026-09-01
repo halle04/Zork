@@ -1,10 +1,9 @@
-﻿
+
 bool isGame = true;
 bool isMenu = true;
 bool isPlaying = false;
 bool hasKey = false;
 bool intro = false;
-bool win = false;
 int guessesLeft = 10;
 int randomNumber = new Random().Next(0, 100);
 
@@ -173,6 +172,10 @@ while (isGame)
                 myLocation = "Starting Room";
                 Console.WriteLine("You move back from the door.");
             }
+            if (myCommand == "inspect" || myCommand == "look")
+            {
+                Console.WriteLine("The door is locked. You need a key to open it.");
+            }
         }
         if (hasKey == true && myLocation == "North Door")
         {
@@ -272,7 +275,6 @@ while (isGame)
                     Console.WriteLine("Congratulations! You guessed the number." +
                         "\n 'use the command 'pic''." +
                         "\nYou are back in the middle of the Kitchen");
-                    win = true;
                     myLocation = "Kitchen";
                 }
             }
