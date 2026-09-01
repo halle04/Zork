@@ -17,7 +17,7 @@ while (isGame)
 {
     while (isMenu == true)
     {
-        Console.WriteLine("");
+        Console.WriteLine("_______________________");
         Console.WriteLine("Hello welcome to Zork!\n1.Start Game\n2.Info\n3.Quit");
         Console.WriteLine("");
         Console.Write("> ");
@@ -30,14 +30,24 @@ while (isGame)
             isPlaying = true;
             intro = true;
             isMenu = false;
+            Console.Clear();
 
         }
         if (myMenu == "2")
         {
-            Console.WriteLine("Zork is a text-based adventure game where you explore a world and interact with objects and characters through text commands." +
-                "\nYou can move around, inspect your surroundings, and solve puzzles to progress through the game." +
-                "\nUse commands like 'north', 'south', 'east', 'west' to move, and 'inspect' to examine your environment." +
-                "\nHave fun exploring!");
+            Console.WriteLine("Game Info:\n" +
+                " Zork is a text-based adventure game." +
+                "\n Where you explore a world and interact with objects and characters through text commands." +
+                "\n You can move around, inspect your surroundings, and solve puzzles to progress through the game." +
+                "\nCommands:" +
+                "\n- north/n" +
+                "\n- south/s" +
+                "\n- east/e" +
+                "\n- west/w" +
+                "\n- inspect/look" +
+                "\n- use, eat, talk" +
+                "\n- save, menu, quit" +
+                "\n\nHave fun exploring!");
         }
         if (myMenu == "3")
         {
@@ -50,7 +60,7 @@ while (isGame)
     {
         if (intro == true)
         {
-            Console.WriteLine("You are in a room with 3 doors");
+            Console.WriteLine("\nYou are in a room with 3 doors");
             Console.WriteLine("There are doors to your North, West and East");
             intro = false;
         }
@@ -82,11 +92,45 @@ while (isGame)
             Console.WriteLine("Returning to menu...");
             isMenu = true;
             isPlaying = false;
+            Console.Clear();
         }
         if (myCommand == "quit")
         {
             Console.WriteLine("Why do you hate me?");
             Environment.Exit(0);
+        }
+        if (myCommand == "pic")
+        {
+            Console.WriteLine(
+"\n─────────────────────────▐█" +
+"\n────▄──────────────────▄█▓█" +
+"\n───▐██▄───────────────▄▓░░▓▓" +
+"\n───▐█░██▓────────────▓▓░░░▓▌" +
+"\n───▐█▌░▓██──────────█▓░░░░▓" +
+"\n────▓█▌░░▓█▄███████▄███▓░▓█" +
+"\n────▓██▌░▓██░░░░░░░░░░▓█░▓▌" +
+"\n─────▓█████░░░░░░░░░░░░▓██" +
+"\n─────▓██▓░░░░░░░░░░░░░░░▓█" +
+"\n─────▐█▓░░░░░░█▓░░▓█░░░░▓█▌" +
+"\n─────▓█▌░▓█▓▓██▓░█▓▓▓▓▓░▓█▌" +
+"\n─────▓▓░▓██████▓░▓███▓▓▌░█▓" +
+"\n────▐▓▓░█▄▐▓▌█▓░░▓█▐▓▌▄▓░██" +
+"\n────▓█▓░▓█▄▄▄█▓░░▓█▄▄▄█▓░██▌" +
+"\n────▓█▌░▓█████▓░░░▓███▓▀░▓█▓" +
+"\n───▐▓█░░░▀▓██▀░░░░░─▀▓▀░░▓█▓" +
+"\n───▓██░░░░░░░░▀▄▄▄▄▀░░░░░░▓▓" +
+"\n───▓█▌░░░░░░░░░░▐▌░░░░░░░░▓▓▌" +
+"\n───▓█░░░░░░░░░▄▀▀▀▀▄░░░░░░░█▓" +
+"\n──▐█▌░░░░░░░░▀░░░░░░▀░░░░░░█▓" +
+"\n──▓█░░░░░░░░░░░░░░░░░░░░░░░██▓" +
+"\n──▓█░░░░░░░░░░░░░░░░░░░░░░░▓█▓" +
+"\n──██░░░░░░░░░░░░░░░░░░░░░░░░█▓" +
+"\n──█▌░░░░░░░░░░░░░░░░░░░░░░░░▐▓▌" +
+"\n─▐▓░░░░░░░░░░░░░░░░░░░░░░░░░░█▓" +
+"\n─█▓░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓" +
+"\n─█▓░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓" +
+"\n▐█▓░░░░░░░░░░░░░░░░░░░░░░░░░░░█" +
+"\n█▓▌░░░░░░░░░░░░░░░░░░░░░░░░░░░▓");
         }
 
         //Locations
@@ -215,17 +259,19 @@ while (isGame)
             {
                 if (guess < randomNumber)
                 {
-                    Console.WriteLine("Too low!");
+                    Console.WriteLine("Higher ^");
                     guessesLeft--;
                 }
                 else if (guess > randomNumber)
                 {
-                    Console.WriteLine("Too high!");
+                    Console.WriteLine("Lower v");
                     guessesLeft--;
                 }
                 else if (guess == randomNumber)
                 {
-                    Console.WriteLine("Congratulations! You guessed the number.\n You are back in the middle of the Kitchen");
+                    Console.WriteLine("Congratulations! You guessed the number." +
+                        "\n'use the command 'pic''." +
+                        "\nYou are back in the middle of the Kitchen");
                     win = true;
                     myLocation = "Kitchen";
                 }
@@ -299,6 +345,7 @@ while (isGame)
             {
                 myLocation = "Starting Room";
                 Console.WriteLine("You are back in the Starting Room");
+                hallwaycounter = 0;
             }
             if (myCommand == "north" || myCommand == "n")
             {
@@ -317,6 +364,7 @@ while (isGame)
             {
                 myLocation = "Starting Room";
                 Console.WriteLine("You walk back to the Starting Room.");
+                hallwaycounter = 0;
             }
             if (myCommand == "north" || myCommand == "n")
             {
