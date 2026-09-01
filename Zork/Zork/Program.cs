@@ -17,7 +17,13 @@ while (isGame)
     while (isMenu == true)
     {
         Console.WriteLine("_______________________");
-        Console.WriteLine("Hello welcome to Zork!\n1.Start Game\n2.Info\n3.Quit");
+        Console.WriteLine("Hello welcome to" +
+            "\n ▒▒▒▒  ▒▒▒   ▒▒▒   ▒  ▒" +
+            "\n   ▒  ▒   ▒  ▒  ▒  ▒ ▒" +
+            "\n  ▒   ▒   ▒  ▒▒▒   ▒▒" +
+            "\n ▒    ▒   ▒  ▒ ▒   ▒ ▒" +
+            "\n▒▒▒▒   ▒▒▒   ▒  ▒  ▒  ▒" +
+            "\n\n1.Start Game\n2.Info\n3.Quit");
         Console.WriteLine("");
         Console.Write("> ");
 
@@ -130,6 +136,20 @@ while (isGame)
 "\n─█▓░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓" +
 "\n▐█▓░░░░░░░░░░░░░░░░░░░░░░░░░░░█" +
 "\n█▓▌░░░░░░░░░░░░░░░░░░░░░░░░░░░▓");
+        }
+        if (myCommand == "map" || myCommand == "m")
+        {
+            Console.WriteLine(
+            "Doors:█\n"+
+            "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" +
+            "\n▓▓▓▓▓▓▓▓▓        ▓▓▓▓▓▓▓▓▓▓" +
+            "\n▓▓▓▓▓▓▓▓▓        ▓▓▓▓▓▓▓▓▓▓" +
+            "\n▓▓▓▓▓▓▓▓▓▓▓▓░░▓▓▓▓▓▓▓▓▓▓▓▓▓" +
+            "\n▓    ▓▓▓▓       ▓         ▓" +
+            "\n▓    ░  ░ Start ░ Kitchen ▓" +
+            "\n▓    ▓▓▓▓       ▓         ▓" +
+            "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"
+            );
         }
 
         //Locations
@@ -401,6 +421,11 @@ while (isGame)
         }
     }
 }
+
+
+
+
+
 
 
 
