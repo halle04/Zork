@@ -15,6 +15,7 @@ Interactive:
 inspect/look
 use
 eat
+talk
 
 Other:
 help
