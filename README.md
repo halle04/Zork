@@ -1,2 +1,23 @@
 # Zork
 Made Zork for computer class
+
+Zork is a text based adventure game.
+
+Inputs:
+
+Movement:
+north/n
+south/s
+west/w
+easy/e
+
+Interactive:
+inspect/look
+use
+eat
+
+Other:
+help
+save
+menu
+quit
