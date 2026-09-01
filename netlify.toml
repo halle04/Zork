@@ -1,0 +1,198 @@
+# Read the Netlify docs for details:
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+#
+#
+# Build commands. Logic for previews vs prod are handled inside netlify_build.sh
+[context.deploy-preview]
+    command = "bash netlify_build.sh"
+
+[context.production]
+    command = "bash netlify_build.sh"
+
+[build]
+    base = "/"
+    publish = "public/"
+    command = "bash netlify_build.sh"
+
+# The versions of Hugo and Node to use for the Netlify build.
+# Hugo >= 0.158 runs PostCSS under Node's permission model (node --permission),
+# which requires Node >= 22.13.
+[build.environment]
+  HUGO_VERSION = "0.162.1"
+  NODE_VERSION = "22"
+
+#
+# The following are Netlify redirects for moved docs pages
+# https://docs.netlify.com/configure-builds/file-based-configuration/#redirects
+#
+# Note that redirects should be ordered from most specific to least specific
+# match, since Netlify uses the *first* match it finds in this file.
+#
+[[redirects]]
+from = "/docs/*"
+to = "/:splat"
+status = 302
+
+# Redirects for pre-Hugo docs
+[[redirects]]
+from = "/v1.9/concepts/managed-resources.html"
+to = "/latest/concepts/managed-resources"
+status = 302
+
+[[redirects]]
+from = "/v1.9/concepts/providers.html"
+to = "/latest/concepts/providers"
+status = 302
+
+[[redirects]]
+from = "/v1.9/getting-started/create-configuration"
+to = "/latest/getting-started"
+status = 302
+
+[[redirects]]
+from = "/v1.9/getting-started/install-configure"
+to = "/latest/software/install/"
+status = 302
+
+[[redirects]]
+# Redirects for deleted pages/sections
+from = "/knowledge-base/install/**"
+to = "/latest/software/"
+status = 302
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/composition-revisions"
+to = "/latest/concepts/composition-revisions/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/composition-revisions-example"
+to = "/latest/concepts/composition-revisions/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/connection-details"
+to = "/latest/concepts/connection-details/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/integrations/argo-cd-crossplane"
+to = "/latest/guides/crossplane-with-argo-cd/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/write-a-composition-function-in-go/"
+to = "/latest/guides/write-a-composition-function-in-go/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/write-a-composition-function-in-python"
+to = "/latest/guides/write-a-composition-function-in-python/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/multi-tenant/"
+to = "/latest/guides/multi-tenant/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/import-existing-resources/"
+to = "/latest/guides/import-existing-resources/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/integrations/vault-injection/"
+to = "/latest/guides/vault-injection/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/integrations/vault-as-secret-store/"
+to = "/latest/guides/vault-as-secret-store/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/troubleshoot/"
+to = "/latest/guides/troubleshoot-crossplane/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/self-signed-ca-certs/"
+to = "/latest/guides/self-signed-ca-certs/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/disaster-recovery/"
+to = "/latest/guides/disaster-recovery/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/learn-more/"
+to = "/latest/learn/"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/feature-lifecycle/"
+to = "/latest/learn/feature-lifecycle"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/release-cycle/"
+to = "/latest/learn/release-cycle"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/guides/"
+to = "/latest/guides"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/integrations/"
+to = "/latest/guides"
+status = 301
+
+[[redirects]]
+# Moved KB article. See issue #749
+from = "/knowledge-base/"
+to = "/latest/"
+status = 301
+
+# Redirect from the old CLI documentation path to the new CLI documentation
+# path.
+[[redirects]]
+from = "/:version/cli/*"
+to = "/cli/:version/:splat"
+status=301
+
+# Redirect requests for EOL version docs to latest. These might return 404 if
+# docs have moved around, but for many docs the redirect will work. This relies
+# on the fact that Netlify will not perform a redirect for a page that exists.
+[[redirects]]
+from = "/:version/*"
+to = "/latest/:splat"
+status = 302
+
+# Use [dev] to set configuration overrides for local
+# development environments run using Netlify Dev - except
+# for environment variables. Environment variables for Netlify
+# Dev should be set under [context.dev.environment] instead.
+[dev]
+    command = "hugo server"
+    port = 8888
