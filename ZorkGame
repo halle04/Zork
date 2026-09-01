@@ -4,6 +4,9 @@ bool isMenu = true;
 bool isPlaying = false;
 bool hasKey = false;
 bool intro = false;
+bool win = false;
+int guessesLeft = 10;
+int randomNumber = new Random().Next(0, 100);
 
 //Console.WriteLine("Use (help) for a list of commands");
 string myLocation = "Starting Room";
@@ -66,7 +69,7 @@ while (isGame)
         {
             Console.WriteLine("Movement: (north, south, east, west) or (n, s, e, w)");
             Console.WriteLine("information: (inspect/look), use, eat");
-            Console.WriteLine("save, menu, quit");
+            Console.WriteLine("save, menu, talk, quit");
         }
 
         //inputs
@@ -164,7 +167,7 @@ while (isGame)
         {
             if (myCommand == "inspect" || myCommand == "look")
             {
-                Console.WriteLine("There is a Fridge to the north");
+                Console.WriteLine("There is a Fridge to the north and a man to the west.");
             }
         }
 
@@ -181,7 +184,64 @@ while (isGame)
                 myLocation = "Fridge";
                 Console.WriteLine("You are looking at the Fridge");
             }
+            if (myCommand == "west" || myCommand == "w")
+            {
+                myLocation = "Man";
+                Console.WriteLine("You see a man sitting on a chair.");
+            }
         }
+        //  Man
+        if (myLocation == "Man")
+        {
+            if (myCommand == "inspect" || myCommand == "look")
+            {
+                Console.WriteLine("The man is sitting on a chair, looking at you.");
+            }
+            if (myCommand == "talk")
+            {
+                myLocation = "Guessing Game";
+                Console.WriteLine("The man says:\n'Guess what number i'm thinking about between 0 and 100.'\n'But be careful!'");
+            }
+        }
+
+        //Guessing Game
+        if (myLocation == "Guessing Game")
+        {
+            if (myCommand == null)
+            {
+                Console.WriteLine("Please enter a number.");
+            }
+            else if (int.TryParse(myCommand, out int guess))
+            {
+                if (guess < randomNumber)
+                {
+                    Console.WriteLine("Too low!");
+                    guessesLeft--;
+                }
+                else if (guess > randomNumber)
+                {
+                    Console.WriteLine("Too high!");
+                    guessesLeft--;
+                }
+                else if (guess == randomNumber)
+                {
+                    Console.WriteLine("Congratulations! You guessed the number.\n You are back in the middle of the Kitchen");
+                    win = true;
+                    myLocation = "Kitchen";
+                }
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid number between 0 and 100.");
+            }
+
+            if (guessesLeft <= 0)
+            {
+                Console.WriteLine("I'm sorry, but you've run out of guesses.\nThe man killed you\nTry again.");
+                Environment.Exit(0);
+            }
+        }
+
 
         //  Fridge
         if (myLocation == "Fridge")
@@ -288,10 +348,10 @@ while (isGame)
             }
         }
     }
-
-
 }
 
+if (win) Console.WriteLine("You won!");
+if (!win) Console.WriteLine($"You lost! The number was {randomNumber} (The Man killed you).");
 
 
 
