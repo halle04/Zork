@@ -1,10 +1,9 @@
 # Zork
 Made Zork for computer class
 
+#You need C# downloaded to play the exe and console app to play the code
 Either import the code into a coding program c#
 download the code and run the .exe in bin
-or use this itch.io link
-https://halle04.itch.io/azg
 
 Zork is a text based adventure game.
 
