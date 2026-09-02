@@ -45,12 +45,12 @@ while (isGame)
                 "\n Where you explore a world and interact with objects and characters through text commands." +
                 "\n You can move around, inspect your surroundings, and solve puzzles to progress through the game." +
                 "\nCommands:" +
-                "\n- north/n" +
-                "\n- south/s" +
-                "\n- east/e" +
-                "\n- west/w" +
+                "\n- forward/f" +
+                "\n- back/b" +
+                "\n- right/r" +
+                "\n- left/l" +
                 "\n- inspect/look" +
-                "\n- use, eat, talk" +
+                "\n- use, eat, talk, map" +
                 "\n- save, menu, quit" +
                 "\n\nHave fun exploring!");
         }
@@ -66,7 +66,7 @@ while (isGame)
         if (intro == true)
         {
             Console.WriteLine("\nYou are in a room with 3 doors");
-            Console.WriteLine("There are doors to your North, West and East");
+            Console.WriteLine("There are doors to your Front, Left and Right");
             intro = false;
         }
         else
@@ -82,9 +82,9 @@ while (isGame)
         //Helping player
         if (myCommand == "help")
         {
-            Console.WriteLine("Movement: (north, south, east, west) or (n, s, e, w)");
-            Console.WriteLine("information: (inspect/look), use, eat");
-            Console.WriteLine("save, menu, talk, quit");
+            Console.WriteLine("Movement: (forward/f, back/b, right/r, left/l)");
+            Console.WriteLine("information: (inspect/look), use, talk, eat, map");
+            Console.WriteLine("save, menu, quit");
         }
 
         //inputs
@@ -104,36 +104,36 @@ while (isGame)
             Console.WriteLine("Why do you hate me?");
             Environment.Exit(0);
         }
-        if (myCommand == "pic")
+        if (myCommand == "picture")
         {
             Console.WriteLine(
-"\n─────────────────────────▐█" +
-"\n────▄──────────────────▄█▓█" +
-"\n───▐██▄───────────────▄▓░░▓▓" +
-"\n───▐█░██▓────────────▓▓░░░▓▌" +
-"\n───▐█▌░▓██──────────█▓░░░░▓" +
-"\n────▓█▌░░▓█▄███████▄███▓░▓█" +
-"\n────▓██▌░▓██░░░░░░░░░░▓█░▓▌" +
-"\n─────▓█████░░░░░░░░░░░░▓██" +
-"\n─────▓██▓░░░░░░░░░░░░░░░▓█" +
-"\n─────▐█▓░░░░░░█▓░░▓█░░░░▓█▌" +
-"\n─────▓█▌░▓█▓▓██▓░█▓▓▓▓▓░▓█▌" +
-"\n─────▓▓░▓██████▓░▓███▓▓▌░█▓" +
-"\n────▐▓▓░█▄▐▓▌█▓░░▓█▐▓▌▄▓░██" +
-"\n────▓█▓░▓█▄▄▄█▓░░▓█▄▄▄█▓░██▌" +
-"\n────▓█▌░▓█████▓░░░▓███▓▀░▓█▓" +
-"\n───▐▓█░░░▀▓██▀░░░░░─▀▓▀░░▓█▓" +
-"\n───▓██░░░░░░░░▀▄▄▄▄▀░░░░░░▓▓" +
-"\n───▓█▌░░░░░░░░░░▐▌░░░░░░░░▓▓▌" +
-"\n───▓█░░░░░░░░░▄▀▀▀▀▄░░░░░░░█▓" +
-"\n──▐█▌░░░░░░░░▀░░░░░░▀░░░░░░█▓" +
-"\n──▓█░░░░░░░░░░░░░░░░░░░░░░░██▓" +
-"\n──▓█░░░░░░░░░░░░░░░░░░░░░░░▓█▓" +
-"\n──██░░░░░░░░░░░░░░░░░░░░░░░░█▓" +
-"\n──█▌░░░░░░░░░░░░░░░░░░░░░░░░▐▓▌" +
-"\n─▐▓░░░░░░░░░░░░░░░░░░░░░░░░░░█▓" +
-"\n─█▓░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓" +
-"\n─█▓░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓" +
+"\n                          █" +
+"\n    ▄                   ▄█▓█" +
+"\n   ▐██▄               ▄▓░░▓▓" +
+"\n   ▐█░██▓            ▓▓░░░▓▌" +
+"\n   ▐█▌░▓██          █▓░░░░▓" +
+"\n   ▓█▌░░▓█▄███████▄███▓░▓█" +
+"\n    ▓██▌░▓██░░░░░░░░░░▓█░▓▌" +
+"\n     ▓█████░░░░░░░░░░░░▓██" +
+"\n     ▓██▓░░░░░░░░░░░░░░░▓█" +
+"\n     ▐█▓░░░░░░█▓░░▓█░░░░▓█▌" +
+"\n     ▓█▌░▓█▓▓██▓░█▓▓▓▓▓░▓█▌" +
+"\n     ▓▓░▓██████▓░▓███▓▓▌░█▓" +
+"\n    ▐▓▓░█▄▐▓▌█▓░░▓█▐▓▌▄▓░██" +
+"\n    ▓█▓░▓█▄▄▄█▓░░▓█▄▄▄█▓░██▌" +
+"\n    ▓█▌░▓█████▓░░░▓███▓▀░▓█▓" +
+"\n   ▐▓█░░░▀▓██▀░░░░░─▀▓▀░░▓█▓" +
+"\n   ▓██░░░░░░░░▀▄▄▄▄▀░░░░░░▓▓" +
+"\n   ▓█▌░░░░░░░░░░▐▌░░░░░░░░▓▓▌" +
+"\n   ▓█░░░░░░░░░▄▀▀▀▀▄░░░░░░░█▓" +
+"\n  ▐█▌░░░░░░░░▀░░░░░░▀░░░░░░█▓" +
+"\n  ▓█░░░░░░░░░░░░░░░░░░░░░░░██▓" +
+"\n  ▓█░░░░░░░░░░░░░░░░░░░░░░░▓█▓" +
+"\n  ██░░░░░░░░░░░░░░░░░░░░░░░░█▓" +
+"\n  █▌░░░░░░░░░░░░░░░░░░░░░░░░▐▓▌" +
+"\n ▐▓░░░░░░░░░░░░░░░░░░░░░░░░░░█▓" +
+"\n █▓░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓" +
+"\n █▓░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓" +
 "\n▐█▓░░░░░░░░░░░░░░░░░░░░░░░░░░░█" +
 "\n█▓▌░░░░░░░░░░░░░░░░░░░░░░░░░░░▓");
         }
@@ -160,37 +160,47 @@ while (isGame)
         {
             if (myCommand == "inspect" || myCommand == "look")
             {
-                Console.WriteLine("There are doors to your North, West and East");
+                Console.WriteLine("There are doors to your Front, Left and Right");
             }
         }
         // Moving from the starting room
         if (myLocation == "Starting Room")
         {
-            if (myCommand == "east" || myCommand == "e")
+            if (myCommand == "right" || myCommand == "r")
             {
                 myLocation = "Kitchen";
                 Console.WriteLine("You have entered the Kitchen");
             }
-            if (myCommand == "north" || myCommand == "n")
+            if (myCommand == "forward" || myCommand == "f")
             {
                 myLocation = "North Door";
                 Console.WriteLine("you are looking at a locked door.");
                 Console.WriteLine("It seems like you need a key to open it.");
             }
-            if (myCommand == "west" || myCommand == "w")
+            if (myCommand == "left" || myCommand == "l")
             {
                 myLocation = "West Hallway";
-                Console.WriteLine("You have entered the West Hallway");
+                Console.WriteLine("You have entered the Left Hallway");
             }
         }
 
         //North Door
         if (myLocation == "North Door")
         {
-            if (myCommand == "south" || myCommand == "s")
+            if (myCommand == "back" || myCommand == "b")
             {
                 myLocation = "Starting Room";
                 Console.WriteLine("You move back from the door.");
+            }
+            if(myCommand == "left" || myCommand == "l")
+            {
+                myLocation = "West Hallway";
+                Console.WriteLine("You move to the Left Hallway.");
+            }
+            if(myCommand == "right" || myCommand == "r")
+            {
+                myLocation = "Kitchen";
+                Console.WriteLine("You move to the Kitchen.");
             }
             if (myCommand == "inspect" || myCommand == "look")
             {
@@ -234,24 +244,24 @@ while (isGame)
         {
             if (myCommand == "inspect" || myCommand == "look")
             {
-                Console.WriteLine("There is a Fridge to the north and a man to the west.");
+                Console.WriteLine("There is a Fridge to the infront of you and a man to the left.");
             }
         }
 
         // Moving from the Kitchen
         if (myLocation == "Kitchen")
         {
-            if (myCommand == "south" || myCommand == "s")
+            if (myCommand == "back" || myCommand == "b")
             {
                 myLocation = "Starting Room";
                 Console.WriteLine("You are back in the Starting Room");
             }
-            if (myCommand == "north" || myCommand == "n")
+            if (myCommand == "forward" || myCommand == "f")
             {
                 myLocation = "Fridge";
                 Console.WriteLine("You are looking at the Fridge");
             }
-            if (myCommand == "west" || myCommand == "w")
+            if (myCommand == "left" || myCommand == "l")
             {
                 myLocation = "Man";
                 Console.WriteLine("You see a man sitting on a chair.");
@@ -293,7 +303,7 @@ while (isGame)
                 else if (guess == randomNumber)
                 {
                     Console.WriteLine("Congratulations! You guessed the number." +
-                        "\n 'use the command 'pic''." +
+                        "\n 'use the command 'picture''." +
                         "\nYou are back in the middle of the Kitchen");
                     myLocation = "Kitchen";
                 }
@@ -325,7 +335,7 @@ while (isGame)
                 myLocation = "inside Fridge";
                 Console.WriteLine("You open the Fridge and see Jello with a Key inside.");
             }
-            if (myCommand == "south" || myCommand == "s")
+            if (myCommand == "back" || myCommand == "b")
             {
                 myLocation = "Kitchen";
                 Console.WriteLine("You are back in the Kitchen");
@@ -341,7 +351,7 @@ while (isGame)
                 hasKey = true;
             }
 
-            if (myCommand == "south" || myCommand == "s")
+            if (myCommand == "back" || myCommand == "b")
             {
                 myLocation = "Kitchen";
                 Console.WriteLine("You are back in the Kitchen");
@@ -365,13 +375,13 @@ while (isGame)
         // Moving in hallway
         if (myLocation == "West Hallway")
         {
-            if (myCommand == "south" || myCommand == "s")
+            if (myCommand == "back" || myCommand == "b")
             {
                 myLocation = "Starting Room";
                 Console.WriteLine("You are back in the Starting Room");
                 hallwaycounter = 0;
             }
-            if (myCommand == "north" || myCommand == "n")
+            if (myCommand == "forward" || myCommand == "f")
             {
                 myLocation = "Hallway2";
                 hallwaycounter = hallwaycounter + 1;
@@ -384,13 +394,13 @@ while (isGame)
         }
         if (myLocation == "Hallway2")
         {
-            if (myCommand == "south" || myCommand == "s")
+            if (myCommand == "back" || myCommand == "b")
             {
                 myLocation = "Starting Room";
                 Console.WriteLine("You walk back to the Starting Room.");
                 hallwaycounter = 0;
             }
-            if (myCommand == "north" || myCommand == "n")
+            if (myCommand == "forward" || myCommand == "f")
             {
                 myLocation = "West Hallway";
             }
@@ -401,11 +411,11 @@ while (isGame)
         }
         if (myLocation == "Stuck")
         {
-            if (myCommand == "south" || myCommand == "s")
+            if (myCommand == "back" || myCommand == "b")
             {
                 Console.WriteLine("The door is no where to be found.");
             }
-            if (myCommand == "north" || myCommand == "n")
+            if (myCommand == "forward" || myCommand == "f")
             {
                 Console.WriteLine("Something is feeling strange but you keep going.");
             }
