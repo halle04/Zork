@@ -10,16 +10,16 @@ Zork is a text based adventure game.
 Inputs:
 
 Movement:
-forward/f
-back/b
-left/l
+forward/f,
+back/b,
+left/l,
 right/r
 
 Interactive:
-inspect/look
-use
-eat
-talk
+(inspect/look)
+use,
+eat,
+talk,
 map
 
 Other:
