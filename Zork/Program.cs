@@ -1,4 +1,4 @@
-﻿
+
 bool isGame = true;
 bool isMenu = true;
 bool isPlaying = false;
@@ -17,13 +17,17 @@ while (isGame)
     while (isMenu == true)
     {
         Console.WriteLine("_______________________");
-        Console.WriteLine("Hello welcome to" +
-            "\n ▒▒▒▒  ▒▒▒   ▒▒▒   ▒  ▒" +
+        Console.WriteLine("Hello welcome to");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(
+            " ▒▒▒▒  ▒▒▒   ▒▒▒   ▒  ▒" +
             "\n   ▒  ▒   ▒  ▒  ▒  ▒ ▒" +
             "\n  ▒   ▒   ▒  ▒▒▒   ▒▒" +
             "\n ▒    ▒   ▒  ▒ ▒   ▒ ▒" +
-            "\n▒▒▒▒   ▒▒▒   ▒  ▒  ▒  ▒" +
-            "\n\n1.Start Game\n2.Info\n3.Quit");
+            "\n▒▒▒▒   ▒▒▒   ▒  ▒  ▒  ▒");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("\n1.Start Game\n2.Info\n3.Quit");
+        
         Console.WriteLine("");
         Console.Write("> ");
 
